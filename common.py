@@ -24,9 +24,21 @@ def findFiles(root_dir, filter_type, reverse=False):
     for i in range(paths.__len__()):
         files.append(paths[i] + names[i])
     print(names.__len__().__str__() + " files have been found.")
-    paths.sort()
-    names.sort()
-    files.sort()
+
+    paths = np.array(paths)
+    names = np.array(names)
+    files = np.array(files)
+
+    index = np.argsort(files)
+
+    paths = paths[index]
+    names = names[index]
+    files = files[index]
+
+    paths = list(paths)
+    names = list(names)
+    files = list(files)
+    
     if reverse:
         paths.reverse()
         names.reverse()
